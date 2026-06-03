@@ -1,0 +1,91 @@
+:root {
+  --primary: #ad46f2;          /* Violet de Unified Champions */
+  --primary-hover: #9227d8;
+  --secondary: #ff2a85;        /* Rose/magenta e-sport vibrant */
+  --accent-cyan: #00f2fe;      /* Cyan pour surbrillances gaming */
+  --bg-dark: #06070d;          /* Obsidian très sombre */
+  --bg-card: rgba(18, 15, 30, 0.6); /* Fond de carte sombre translucide */
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-light: rgba(173, 70, 242, 0.15); /* Bordures teintées de violet */
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg-dark);
+  /* Dégradé radial inspiré de l'esport */
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(173, 70, 242, 0.18) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(255, 42, 133, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(0, 242, 254, 0.05) 0px, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 600;
+  color: var(--accent-cyan);
+  text-decoration: inherit;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(173, 70, 242, 0.5);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: italic; /* Style Agrandir Wide Black Italic */
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--glass-shadow);
+  padding: 2rem;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(173, 70, 242, 0.4);
+  box-shadow: 0 12px 40px rgba(173, 70, 242, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
