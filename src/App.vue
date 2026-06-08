@@ -4,7 +4,7 @@
       <div class="header-content">
         <div class="identity">
           <h1><span class="highlight">Valentin</span> MICHEL</h1>
-          <p class="subtitle">Étudiant en BUT Informatique – Portfolio de Compétences</p>
+          <p class="subtitle">Étudiant en BUT Informatique – Stage au département MMI (Salle E-sport)</p>
         </div>
         <div class="contact-info">
           <p>Contact : <a href="mailto:valentin.michel@edu.univ-fcomte.fr">valentin.michel@edu.univ-fcomte.fr</a></p>

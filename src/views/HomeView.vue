@@ -1,21 +1,16 @@
 <template>
   <div class="home-view animate-fade-in">
     
-    <!-- Partie 2 : Introduction de la page d'accueil avec illustration -->
-    <section class="section glass-panel stagger-1 intro-grid">
-      <div class="intro-text-wrapper">
-        <h2>Introduction</h2>
-        <p>
-          Bienvenue sur mon site portfolio de deuxième année de BUT Informatique. 
-          Ce site présente les compétences et savoir-faire que j'ai développés 
-          durant mon stage de fin d'année. Vous y trouverez mes réalisations techniques, 
-          mon suivi de projet ainsi que mon intégration au sein de l'organisme d'accueil, 
-          avec des traces concrètes issues de mon travail.
-        </p>
-      </div>
-      <div class="intro-image-wrapper">
-        <img src="/home_illustration.png" alt="Illustration Unified Champions Setup" class="intro-image" />
-      </div>
+    <!-- Partie 2 : Introduction de la page d'accueil -->
+    <section class="section glass-panel stagger-1">
+      <h2>Introduction</h2>
+      <p>
+        Bienvenue sur mon site portfolio de deuxième année de BUT Informatique. 
+        Ce site présente les compétences et savoir-faire que j'ai développés durant mon stage de fin d'année, 
+        effectué de manière transversale au sein du département MMI (Métiers du Multimédia et de l'Internet) de Montbéliard. 
+        Vous y trouverez mes réalisations techniques, mon suivi de projet ainsi que mon intégration au sein de l'organisme d'accueil, 
+        avec des traces concrètes issues de mon travail.
+      </p>
     </section>
 
     <!-- Partie 3 : Description du Contexte Entreprise -->
@@ -98,7 +93,7 @@
         <li>
           <router-link to="/suivi-projet" class="skill-link">
             <span class="skill-badge project">Volet Suivi de Projet</span>
-            <strong>Suivi de Projet :</strong> Utilisation de Git/GitHub pour le versionnement, Miro pour la planification et réunions régulières de suivi.
+            <strong>Suivi de Projet :</strong> Utilisation de Git/GitHub pour le versionnement, gestion autonome des cycles de développement et réunions hebdomadaires de suivi.
           </router-link>
         </li>
         <li>

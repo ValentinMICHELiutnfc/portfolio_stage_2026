@@ -14,16 +14,56 @@
     <transition name="fade" mode="out-in">
       <div v-if="!activeSubpage" class="subpage-grid stagger-2">
         
-        <div class="subpage-card glass-panel" @click="activeSubpage = 'trace'">
+        <div class="subpage-card glass-panel" @click="activeSubpage = 'git'">
           <div class="card-tag project">Description & Trace</div>
-          <h3>1. Suivi des tâches avec Miro et versionnement Git</h3>
+          <h3>1. Versionnement Git & Collaboration Solo</h3>
           <p>
-            Organisation de mon travail à l'aide d'un tableau Kanban Miro et gestion du dépôt de code Git en solo sur la branche principale.
+            Suivi du versionnement de code en solo sur GitHub et historique linéaire de commits pour un développement autonome et structuré.
           </p>
           <div class="card-skills">
             <span class="skill-badge project">Git</span>
-            <span class="skill-badge project">Miro</span>
-            <span class="skill-badge project">Autonomie</span>
+            <span class="skill-badge project">GitHub</span>
+          </div>
+          <span class="read-more">Consulter la trace →</span>
+        </div>
+
+        <div class="subpage-card glass-panel" @click="activeSubpage = 'infomaniak'">
+          <div class="card-tag project">Description & Trace</div>
+          <h3>2. Configuration de l'Hébergement Découplé</h3>
+          <p>
+            Configuration et serveurs distincts sur Infomaniak : hébergement statique pour l'interface client (Frontend) et serveur Cloud Node.js pour l'API Backend.
+          </p>
+          <div class="card-skills">
+            <span class="skill-badge project">Infomaniak</span>
+            <span class="skill-badge project">Architecture</span>
+          </div>
+          <span class="read-more">Consulter la trace →</span>
+        </div>
+
+        <div class="subpage-card glass-panel" @click="activeSubpage = 'filezilla'">
+          <div class="card-tag project">Description & Trace</div>
+          <h3>3. Déploiement et Transfert FTP (FileZilla)</h3>
+          <p>
+            Gestion des builds de production du Frontend et transfert sécurisé des fichiers statiques compilés vers l'hébergeur avec le protocole FTP.
+          </p>
+          <div class="card-skills">
+            <span class="skill-badge project">FileZilla</span>
+            <span class="skill-badge project">FTP</span>
+            <span class="skill-badge project">Déploiement</span>
+          </div>
+          <span class="read-more">Consulter la trace →</span>
+        </div>
+
+        <div class="subpage-card glass-panel" @click="activeSubpage = 'logs'">
+          <div class="card-tag project">Description & Trace</div>
+          <h3>4. Supervision et Logs en Production</h3>
+          <p>
+            Surveillance en temps réel et analyse des logs d'erreurs du serveur Backend pour diagnostiquer et résoudre de manière réactive les dysfonctionnements.
+          </p>
+          <div class="card-skills">
+            <span class="skill-badge project">Logs</span>
+            <span class="skill-badge project">Monitoring</span>
+            <span class="skill-badge project">Maintenance</span>
           </div>
           <span class="read-more">Consulter la trace →</span>
         </div>
@@ -37,6 +77,7 @@
           <div class="card-skills">
             <span class="skill-badge project">Organisation</span>
             <span class="skill-badge project">Sprints</span>
+            <span class="skill-badge project">Autonomie</span>
           </div>
           <span class="read-more">Consulter le bilan →</span>
         </div>
@@ -47,52 +88,150 @@
       <div v-else class="subpage-content">
         <button class="back-btn" @click="activeSubpage = null">← Retour aux sous-pages</button>
         
-        <!-- Sous-page : Trace -->
-        <div v-if="activeSubpage === 'trace'" class="glass-panel animate-fade-in">
-          <h2>1. Suivi des tâches avec Miro et versionnement Git</h2>
+        <!-- Sous-page : Git -->
+        <div v-if="activeSubpage === 'git'" class="glass-panel animate-fade-in">
+          <h2>1. Versionnement Git & Collaboration Solo</h2>
           
           <div class="skills-highlight">
             <h3>Savoir-faire élémentaires mobilisés :</h3>
             <ul class="skills-badges">
-              <li class="skill-badge project">Initialisation de l'environnement et versionnage (Git / GitHub)</li>
-              <li class="skill-badge project">Planification visuelle et suivi des tâches de développement (Miro)</li>
-              <li class="skill-badge project">Structuration du travail en autonomie</li>
+              <li class="skill-badge project">Initialisation de l'environnement et versionnage (Git)</li>
+              <li class="skill-badge project">Régularité des commits et journalisation du travail</li>
+              <li class="skill-badge project">Gestion du projet en autonomie sur un dépôt distant</li>
             </ul>
           </div>
 
-          <!-- Trace n°2 -->
           <div class="trace-container">
-            <div class="trace-image-wrapper">
-              <img src="/trace_projet.png" alt="Trace 2 : Tableau Miro" class="trace-image" />
+            <div class="trace-image-wrapper medium-trace">
+              <img src="/screenshot_GIT.png" alt="Trace 2 : Dépôt GitHub et historique linéaire de commits" class="trace-image" />
             </div>
             <p class="trace-caption">
-              <strong>Trace 2 :</strong> Capture d'écran du tableau Miro utilisé pour l'organisation et le suivi des fonctionnalités de l'application Unified Champions.
+              <strong>Trace 2 :</strong> Historique de commits du dépôt GitHub de l'application, illustrant la régularité des sauvegardes et le flux de travail direct sur la branche principale <code>main</code>.
             </p>
           </div>
 
           <div class="description-block">
             <h3>Descriptif de la trace</h3>
             <p>
-              La trace n°2 montre l'organisation opérationnelle sur mon tableau Miro. Les fonctionnalités de l'application 
-              y sont découpées et réparties en colonnes (À faire, En cours, Terminé). Concernant la gestion de versions, 
-              le développement s'est fait sur un unique dépôt Git distant. Étant seul à travailler sur le code de l'application, 
-              j'ai choisi de pousser directement l'ensemble des développements et des correctifs sur la branche principale 
-              <code>main</code>.
+              Cette capture d'écran présente l'historique de commits de mon dépôt GitHub. Étant le seul développeur sur l'application <em>Unified Champions</em>, j'ai adopté un workflow direct sur la branche principale (<code>main</code>). Chaque commit représente un incrément fonctionnel et stable, testé localement avant d'être poussé en ligne, évitant ainsi la complexité inutile de branches secondaires pour un développement en solo.
             </p>
           </div>
 
           <div class="description-block">
-            <h3>Descriptif des savoir-faire</h3>
+            <h3>Bilan technique & Rigueur</h3>
             <p>
-              Étant seul sur le projet, j'ai utilisé Miro pour formaliser et organiser mon travail à partir des besoins 
-              exprimés par Pascal Chatonnay. Ce tableau m'a permis de suivre visuellement les fonctionnalités à réaliser 
-              (authentification, scan, matches). Chaque fin de semaine, l'avancement était validé à l'aide de bilans basés 
-              sur mon journal de bord de stage.
+              Le fait de travailler seul sur le projet nécessite une rigueur constante pour ne pas perdre le fil des modifications. L'historique Git sert de journal d'avancement. Chaque commit est rédigé de manière explicite pour retracer l'évolution du code, facilitant ainsi les retours en arrière en cas d'anomalie et garantissant la transparence des développements vis-à-vis du maître de stage.
             </p>
+          </div>
+        </div>
+
+        <!-- Sous-page : Infomaniak -->
+        <div v-if="activeSubpage === 'infomaniak'" class="glass-panel animate-fade-in">
+          <h2>2. Configuration de l'Hébergement Découplé (Infomaniak)</h2>
+          
+          <div class="skills-highlight">
+            <h3>Savoir-faire élémentaires mobilisés :</h3>
+            <ul class="skills-badges">
+              <li class="skill-badge project">Architecture de déploiement multi-serveurs</li>
+              <li class="skill-badge project">Configuration d'hébergement Web statique et Cloud Node.js</li>
+              <li class="skill-badge project">Gestion des environnements de production</li>
+            </ul>
+          </div>
+
+          <div class="trace-container">
+            <div class="trace-image-wrapper medium-trace">
+              <img src="/screenshot_mise_en_place_infomaniak.png" alt="Trace 2b : Configuration des serveurs sur Infomaniak" class="trace-image" />
+            </div>
+            <p class="trace-caption">
+              <strong>Trace 2b :</strong> Interface de gestion Infomaniak montrant l'hébergement séparé (le Frontend statique pour l'interface client Vue.js et l'API Backend Node.js).
+            </p>
+          </div>
+
+          <div class="description-block">
+            <h3>Descriptif de la trace</h3>
             <p>
-              Concernant la gestion du code, l'utilisation de Git sur la branche <code>main</code> a permis d'assurer 
-              l'historique complet de mes commits et la sauvegarde du projet sur GitHub. Le fait de travailler sur 
-              une seule branche m'a demandé une attention particulière avant chaque push pour m'assurer que le code envoyé était fonctionnel.
+              Cette trace montre l'organisation de l'hébergement de l'application au sein de la console d'administration Infomaniak. Deux instances distinctes ont été créées : un hébergement web classique configuré pour servir l'application Frontend statique compilée, et un serveur Cloud configuré pour exécuter l'environnement d'exécution Node.js de l'API Backend.
+            </p>
+          </div>
+
+          <div class="description-block">
+            <h3>Choix architectural et Sécurité</h3>
+            <p>
+              Le découplage physique du Frontend et du Backend offre une sécurité accrue. Les identifiants de base de données et les clés secrètes JWT sont stockés sur le serveur Backend dans des variables d'environnement inaccessibles aux clients. Les communications entre les deux serveurs sont restreintes par les politiques CORS et configurées de façon à n'autoriser que les requêtes provenant du nom de domaine officiel du Frontend.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sous-page : Filezilla -->
+        <div v-if="activeSubpage === 'filezilla'" class="glass-panel animate-fade-in">
+          <h2>3. Déploiement et Transfert FTP (FileZilla)</h2>
+          
+          <div class="skills-highlight">
+            <h3>Savoir-faire élémentaires mobilisés :</h3>
+            <ul class="skills-badges">
+              <li class="skill-badge project">Mise en production par transfert de fichiers (FTP)</li>
+              <li class="skill-badge project">Génération de builds optimisées (Vite.js)</li>
+              <li class="skill-badge project">Synchronisation de répertoires distants</li>
+            </ul>
+          </div>
+
+          <div class="trace-container">
+            <div class="trace-image-wrapper large-trace">
+              <img src="/screenshot_utilisation_filezila.png" alt="Trace 2c : Téléversement FTP via FileZilla" class="trace-image" />
+            </div>
+            <p class="trace-caption">
+              <strong>Trace 2c :</strong> Utilisation du client FTP FileZilla pour téléverser les fichiers statiques compilés de l'interface utilisateur (dossier <code>dist</code> du frontend) sur le serveur d'hébergement statique.
+            </p>
+          </div>
+
+          <div class="description-block">
+            <h3>Descriptif de la trace</h3>
+            <p>
+              Cette trace illustre le processus de déploiement de l'interface utilisateur. Après compilation locale de l'application Vue.js (génération du dossier optimisé <code>dist</code> via la commande <code>npm run build</code>), le client FTP FileZilla est utilisé pour téléverser de façon sécurisée les fichiers statiques (HTML, CSS, JS) sur le serveur web d'Infomaniak.
+            </p>
+          </div>
+
+          <div class="description-block">
+            <h3>Intégration opérationnelle</h3>
+            <p>
+              La mise en production via FileZilla a été automatisée au niveau de la structure des dossiers locaux et distants. Ce flux simple m'a permis de déployer de manière agile et itérative les retours de mon maître de stage, assurant qu'une version récente et testée de l'interface client soit continuellement accessible en production pour les démonstrations et les tests d'utilisabilité de la salle e-sport.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sous-page : Logs -->
+        <div v-if="activeSubpage === 'logs'" class="glass-panel animate-fade-in">
+          <h2>4. Supervision et Logs en Production</h2>
+          
+          <div class="skills-highlight">
+            <h3>Savoir-faire élémentaires mobilisés :</h3>
+            <ul class="skills-badges">
+              <li class="skill-badge project">Surveillance active des serveurs de production</li>
+              <li class="skill-badge project">Lecture et interprétation des logs d'erreurs</li>
+              <li class="skill-badge project">Diagnostic rapide d'anomalies réseau ou base de données</li>
+            </ul>
+          </div>
+
+          <div class="trace-container">
+            <div class="trace-image-wrapper large-trace">
+              <img src="/screenshot_console_backend.png" alt="Trace 2d : Console d'administration et logs d'erreurs Infomaniak" class="trace-image" />
+            </div>
+            <p class="trace-caption">
+              <strong>Trace 2d :</strong> Console d'administration Infomaniak affichant les logs d'erreurs en production pour superviser et diagnostiquer le comportement du serveur backend.
+            </p>
+          </div>
+
+          <div class="description-block">
+            <h3>Descriptif de la trace</h3>
+            <p>
+              Cette capture d'écran présente l'outil de console et de journalisation fourni par Infomaniak pour l'hébergement Backend. Elle permet de suivre en temps réel la sortie standard (stdout/stderr) de l'application Node.js en cours d'exécution. Les lignes de codes d'erreur ou d'exception y sont répertoriées chronologiquement (les informations sensibles ayant été nettoyées pour cette présentation).
+            </p>
+          </div>
+
+          <div class="description-block">
+            <h3>Supervision active & Maintenance</h3>
+            <p>
+              La mise en ligne d'une application ne s'arrête pas au déploiement. Consulter régulièrement cette console de logs m'a permis d'assurer une maintenance réactive du serveur backend. Grâce à ces traces d'exécution, j'ai pu identifier et corriger des exceptions liées aux micro-coupures de connexion de la base de données MySQL ainsi que des tentatives d'accès non autorisées, améliorant ainsi la résilience globale du service.
             </p>
           </div>
         </div>
@@ -105,36 +244,33 @@
             <div class="bilan-card">
               <h3>Contexte d'apprentissage et d'utilisation</h3>
               <p>
-                L'utilisation de Git et de plateformes de planification a été abordée en cours lors de projets universitaires. 
-                En stage, j'ai dû piloter le projet seul, ce qui a nécessité une rigueur d'organisation.
+                L'utilisation de Git pour le versionnement a été abordée en cours lors de projets universitaires. En stage, j'ai dû piloter le projet et la mise en production seul, ce qui a nécessité une rigueur d'organisation accrue.
               </p>
               <p>
-                La principale difficulté a résidé dans l'estimation de la charge de travail et la priorisation des tâches en autonomie. 
-                Utiliser un tableau Miro m'a permis de ne pas m'éparpiller et de me concentrer sur les fonctionnalités prioritaires 
-                (comme la base de données et le scan de présence) avant d'aborder des aspects secondaires.
+                La principale difficulté a résidé dans l'estimation de la charge de travail et la priorisation des tâches en autonomie. La définition d'objectifs de livraison hebdomadaires et la gestion d'un journal de bord rigoureux m'ont permis de ne pas m'éparpiller et de me concentrer sur les fonctionnalités prioritaires (comme la base de données et le scan de présence) avant d'aborder des aspects secondaires.
               </p>
             </div>
 
             <div class="bilan-card">
-              <h3>Évaluation de mon niveau d'expertise</h3>
-              <div class="level-comparison">
-                <div class="level-box before">
-                  <span class="level-label">Avant le stage</span>
-                  <span class="level-title">Niveau Moyen</span>
-                  <div class="level-bar"><div class="fill" style="width: 55%;"></div></div>
-                  <p class="level-desc">
-                    Je savais utiliser Git pour sauvegarder mon code, mais je développais sans planification structurée.
-                  </p>
-                </div>
-                <div class="level-box after">
-                  <span class="level-label">Après le stage</span>
-                  <span class="level-title">Niveau Excellent</span>
-                  <div class="level-bar"><div class="fill" style="width: 90%;"></div></div>
-                  <p class="level-desc">
-                    Capable d'organise de A à Z le développement d'un projet, de suivre mes objectifs sur Miro et de gérer un versionnage propre avec Git en toute autonomie.
-                  </p>
-                </div>
+            <h3>Auto-évaluation de ma progression</h3>
+            <div class="level-comparison">
+              <div class="level-box before">
+                <span class="level-label">Avant le stage</span>
+                <span class="level-title">Bases Académiques</span>
+                <div class="level-bar"><div class="fill" style="width: 55%;"></div></div>
+                <p class="level-desc">
+                  Je savais utiliser les commandes Git de base pour sauvegarder mon code, mais je travaillais sans méthodologie de planification ni livrables réguliers.
+                </p>
               </div>
+              <div class="level-box after">
+                <span class="level-label">Après le stage</span>
+                <span class="level-title">Niveau Autonome</span>
+                <div class="level-bar"><div class="fill" style="width: 75%;"></div></div>
+                <p class="level-desc">
+                  Capable de planifier mes objectifs par cycles de livraison hebdomadaires, de maintenir un dépôt Git propre en solo et de suivre les étapes de déploiement et de supervision de l'application.
+                </p>
+              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -313,6 +449,16 @@ const activeSubpage = ref(null)
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.trace-image-wrapper.large-trace {
+  max-width: 850px;
+}
+
+.trace-image-wrapper.medium-trace {
+  max-width: 700px;
 }
 
 .trace-image {

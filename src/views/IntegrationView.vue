@@ -115,25 +115,25 @@
             </div>
 
             <div class="bilan-card">
-              <h3>Évaluation de mon niveau d'expertise</h3>
-              <div class="level-comparison">
-                <div class="level-box before">
-                  <span class="level-label">Avant le stage</span>
-                  <span class="level-title">Niveau Moyen</span>
-                  <div class="level-bar"><div class="fill" style="width: 50%;"></div></div>
-                  <p class="level-desc">
-                    Je savais expliquer le fonctionnement d'un réseau local, mais je n'avais jamais rédigé de ticket formel pour intégrer un projet en production.
-                  </p>
-                </div>
-                <div class="level-box after">
-                  <span class="level-label">Après le stage</span>
-                  <span class="level-title">Niveau Excellent</span>
-                  <div class="level-bar"><div class="fill" style="width: 85%;"></div></div>
-                  <p class="level-desc">
-                    Capable de formaliser des spécifications de déploiement réseau, de collaborer avec différents services techniques et d'intégrer une solution dans un intranet complexe.
-                  </p>
-                </div>
+            <h3>Auto-évaluation de ma progression</h3>
+            <div class="level-comparison">
+              <div class="level-box before">
+                <span class="level-label">Avant le stage</span>
+                <span class="level-title">Bases Académiques</span>
+                <div class="level-bar"><div class="fill" style="width: 50%;"></div></div>
+                <p class="level-desc">
+                  Je savais expliquer le fonctionnement théorique d'un réseau local, mais je n'avais jamais communiqué de manière professionnelle avec un service d'infrastructure.
+                </p>
               </div>
+              <div class="level-box after">
+                <span class="level-label">Après le stage</span>
+                <span class="level-title">Niveau Autonome</span>
+                <div class="level-bar"><div class="fill" style="width: 75%;"></div></div>
+                <p class="level-desc">
+                  Capable de formaliser des demandes réseau techniques claires (via ticket GLPI), de collaborer efficacement avec un service informatique tiers (CRI) et d'intégrer une solution dans un réseau local.
+                </p>
+              </div>
+            </div>
             </div>
           </div>
         </div>

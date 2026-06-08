@@ -36,7 +36,7 @@
           </p>
           <div class="card-skills">
             <span class="skill-badge tech">Autonomie</span>
-            <span class="skill-badge tech">Expertise</span>
+            <span class="skill-badge tech">Progression</span>
           </div>
           <span class="read-more">Consulter le bilan →</span>
         </div>
@@ -162,6 +162,17 @@
                   Pour valider la présence physique en salle sans pister individuellement les étudiants (RGPD), la logique métier côté serveur compare l'adresse IP du client à une liste blanche restreinte (<code>ALLOWED_ROOM_IPS</code>, représentant les adresses IP de la salle e-sport). Si l'IP ne correspond pas, la transaction en base est rejetée, empêchant toute triche depuis l'extérieur de la salle.
                 </li>
               </ul>
+
+              <h4 style="color: var(--accent-cyan); margin: 2rem 0 0.5rem 0; font-size: 1.2rem;">3. Choix et intégration d'une API externe sous contrainte (HenrikDev vs Riot Games)</h4>
+              <p style="margin-left: 1rem; margin-bottom: 1rem; color: var(--text-muted); line-height: 1.6;">
+                Une des fonctionnalités majeures d'<em>Unified Champions</em> est le tracking des statistiques de jeu en temps réel. Pour y parvenir, une phase cruciale de réflexion technique a été menée pour choisir la source de données. Deux options s'offraient à moi : l'API officielle Riot Games ou HenrikDev API (un wrapper tiers spécialisé pour Valorant).
+              </p>
+              <p style="margin-left: 1rem; margin-bottom: 1rem; color: var(--text-muted); line-height: 1.6;">
+                L'API officielle de Riot Games impose l'obtention d'une <strong>Production Key</strong> (clé de production approuvée) pour effectuer des requêtes régulières en dehors d'un environnement de développement local bridé. L'obtention de cette clé exigeant une application déjà fonctionnelle, déployée et validée par leurs équipes, il était administrativement impossible de démarrer le projet avec celle-ci.
+              </p>
+              <p style="margin-left: 1rem; margin-bottom: 1rem; color: var(--text-muted); line-height: 1.6;">
+                J'ai donc pris la décision stratégique de développer l'application en m'interfaçant avec l'<strong>API HenrikDev</strong>. Ce choix m'a permis de contourner cette contrainte initiale et d'assurer le tracking des données de match dès le premier jour de développement, tout en concevant une architecture de code suffisamment découplée pour pouvoir basculer sur l'API officielle de Riot à l'avenir sans réécrire l'intégralité du système.
+              </p>
             </div>
           </div>
         </div>
@@ -190,25 +201,25 @@
             </div>
 
             <div class="bilan-card">
-              <h3>Évaluation de mon niveau d'expertise</h3>
-              <div class="level-comparison">
-                <div class="level-box before">
-                  <span class="level-label">Avant le stage</span>
-                  <span class="level-title">Niveau Moyen</span>
-                  <div class="level-bar"><div class="fill" style="width: 50%;"></div></div>
-                  <p class="level-desc">
-                    Je savais créer une application web fonctionnelle en local, avec un back-end et un front-end souvent couplés et un déploiement basique.
-                  </p>
-                </div>
-                <div class="level-box after">
-                  <span class="level-label">Après le stage</span>
-                  <span class="level-title">Niveau Excellent</span>
-                  <div class="level-bar"><div class="fill" style="width: 95%;"></div></div>
-                  <p class="level-desc">
-                    Capable de concevoir l'architecture complète d'un projet, de créer une API REST sécurisée, et de la déployer sur des infrastructures professionnelles complexes tout en intégrant des contraintes RGPD.
-                  </p>
-                </div>
+            <h3>Auto-évaluation de ma progression</h3>
+            <div class="level-comparison">
+              <div class="level-box before">
+                <span class="level-label">Avant le stage</span>
+                <span class="level-title">Bases Académiques</span>
+                <div class="level-bar"><div class="fill" style="width: 50%;"></div></div>
+                <p class="level-desc">
+                  Je savais concevoir une base de données simple et coder une application web basique en local, souvent en couplant fortement le front et le back.
+                </p>
               </div>
+              <div class="level-box after">
+                <span class="level-label">Après le stage</span>
+                <span class="level-title">Niveau Autonome</span>
+                <div class="level-bar"><div class="fill" style="width: 75%;"></div></div>
+                <p class="level-desc">
+                  Capable d'implémenter de manière autonome une architecture découplée (Vue.js / Node.js), d'intégrer des middlewares de sécurité réseau standard et de configurer un hébergement distant.
+                </p>
+              </div>
+            </div>
             </div>
           </div>
         </div>
