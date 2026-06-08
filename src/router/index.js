@@ -12,17 +12,17 @@ const router = createRouter({
     {
       path: '/technique',
       name: 'technique',
-      component: () => import('../views/PlaceholderView.vue')
+      component: () => import('../views/TechniqueView.vue')
     },
     {
       path: '/suivi-projet',
       name: 'suivi-projet',
-      component: () => import('../views/PlaceholderView.vue')
+      component: () => import('../views/SuiviProjetView.vue')
     },
     {
       path: '/integration',
       name: 'integration',
-      component: () => import('../views/PlaceholderView.vue')
+      component: () => import('../views/IntegrationView.vue')
     }
   ]
 })

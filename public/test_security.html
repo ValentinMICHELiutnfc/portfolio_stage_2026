@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Audit et Traces de Sécurité Back-end</title>
+  <style>
+    body {
+      background-color: #0A0A0B;
+      color: #E2E8F0;
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: #00F2FE;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    h2 {
+      font-size: 1.4rem;
+      color: #AD46F2;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #94A3B8;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .btn {
+      background: linear-gradient(135deg, #6E17E4, #AD46F2);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(110, 23, 228, 0.4);
+      margin-right: 10px;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(110, 23, 228, 0.6);
+    }
+    pre {
+      background: #020205;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #38BDF8;
+      padding: 15px;
+      border-radius: 6px;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      max-height: 350px;
+      margin-top: 15px;
+    }
+    .success {
+      color: #4ADE80;
+      font-weight: bold;
+    }
+    .danger {
+      color: #F87171;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Unified Champions — Audit de Sécurité API</h1>
+    
+    <!-- Test 1: Rate Limit -->
+    <div class="card">
+      <h2>1. Test de Rate Limiting (express-rate-limit)</h2>
+      <p>Simule l'envoi de 17 requêtes de connexion successives très rapides à l'API pour valider le blocage <strong>HTTP 429 Too Many Requests</strong>.</p>
+      <button class="btn" onclick="testRateLimit()">Lancer le test de Rate Limit</button>
+      <pre id="rate-limit-result">En attente du lancement...</pre>
+    </div>
+
+    <!-- Test 2: Helmet Headers -->
+    <div class="card">
+      <h2>2. Inspection des en-têtes de sécurité HTTP (Helmet.js)</h2>
+      <p>Récupère les en-têtes HTTP renvoyés par l'API pour valider la présence des protections contre le clickjacking et l'injection MIME.</p>
+      <button class="btn" onclick="testHeaders()">Inspecter les Headers</button>
+      <pre id="headers-result">En attente de l'inspection...</pre>
+    </div>
+  </div>
+
+  <script>
+    async function testRateLimit() {
+      const resDiv = document.getElementById('rate-limit-result');
+      resDiv.innerHTML = 'Initialisation du bombardement de requêtes sur /api/login...\n';
+      
+      for (let i = 1; i <= 17; i++) {
+        try {
+          const res = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: 'test@edu.univ-fcomte.fr', password: 'wrong_password_test' })
+          });
+          const data = await res.json();
+          const statusClass = res.status === 429 ? 'danger' : '';
+          
+          resDiv.innerHTML += `Requête #${i} : Status HTTP <span class="${statusClass}">${res.status}</span> — ${JSON.stringify(data)}\n`;
+          
+          if (res.status === 429) {
+            resDiv.innerHTML += `\n<span class="success">✅ SUCCÈS : Le middleware express-rate-limit a bloqué la requête #${i} avec le code HTTP 429 (Too Many Requests). La route d'authentification est protégée contre la force brute.</span>`;
+            break;
+          }
+        } catch (e) {
+          resDiv.innerHTML += `Requête #${i} : Échec réseau (${e.message})\n`;
+        }
+      }
+    }
+
+    async function testHeaders() {
+      const resDiv = document.getElementById('headers-result');
+      resDiv.innerHTML = 'Envoi d\'une requête GET sur /api/health...\n';
+      try {
+        const res = await fetch('http://localhost:3000/api/health');
+        
+        let headersStr = '';
+        const helmetHeaders = [
+          'x-dns-prefetch-control',
+          'x-frame-options',
+          'x-content-type-options',
+          'content-security-policy',
+          'x-xss-protection',
+          'cross-origin-resource-policy'
+        ];
+        
+        for (let [key, value] of res.headers.entries()) {
+          if (helmetHeaders.includes(key)) {
+            headersStr += `<span class="success">${key}</span>: ${value}\n`;
+          } else {
+            headersStr += `${key}: ${value}\n`;
+          }
+        }
+        resDiv.innerHTML += `Statut de la réponse : HTTP <strong>${res.status}</strong>\n\nEn-têtes HTTP de sécurité détectés :\n${headersStr || 'Aucun header détecté'}`;
+      } catch (e) {
+        resDiv.innerHTML += `Échec de récupération des en-têtes (${e.message})`;
+      }
+    }
+  </script>
+</body>
+</html>
